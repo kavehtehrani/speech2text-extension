@@ -5,6 +5,7 @@ import {
   createButtonStyle,
   createHoverButtonStyle,
 } from "./constants.js";
+import { boxOrientation } from "./compat.js";
 
 /**
  * Create a circular button with hover effects
@@ -109,7 +110,7 @@ export function createIncrementButton(symbol, size = 28) {
  */
 export function createCenteredBox(vertical = false, spacing = "8px") {
   return new St.BoxLayout({
-    vertical: vertical,
+    ...boxOrientation(vertical),
     style: `spacing: ${spacing};`,
     x_align: Clutter.ActorAlign.CENTER,
     y_align: Clutter.ActorAlign.CENTER,
@@ -124,7 +125,6 @@ export function createCenteredBox(vertical = false, spacing = "8px") {
  */
 export function createHeaderLayout(titleContainer, closeButton) {
   const headerBox = new St.BoxLayout({
-    vertical: false,
     style: "spacing: 15px;",
     x_align: Clutter.ActorAlign.FILL,
     y_align: Clutter.ActorAlign.CENTER,

@@ -81,7 +81,6 @@ export class RecordingDialog {
 
     // Recording header
     const headerBox = new St.BoxLayout({
-      vertical: false,
       style: "spacing: 15px;",
       x_align: Clutter.ActorAlign.CENTER,
       y_align: Clutter.ActorAlign.CENTER,
