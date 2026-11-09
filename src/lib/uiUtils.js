@@ -2,7 +2,7 @@ import Meta from "gi://Meta";
 import St from "gi://St";
 import * as Config from "resource:///org/gnome/shell/misc/config.js";
 import { COLORS, STYLES } from "./constants.js";
-import { isWaylandCompositor } from "./compat.js";
+import { boxOrientation, isWaylandCompositor } from "./compat.js";
 import { log } from "./resourceUtils.js";
 
 // Helper function to create button styles
@@ -127,7 +127,7 @@ export function createVerticalBox(
   marginBottom = "5px"
 ) {
   return new St.BoxLayout({
-    vertical: true,
+    ...boxOrientation(true),
     style: `spacing: ${spacing}; margin-top: ${marginTop}; margin-bottom: ${marginBottom};`,
   });
 }
@@ -135,7 +135,6 @@ export function createVerticalBox(
 // Create a horizontal box layout with standard spacing
 export function createHorizontalBox(spacing = "10px", marginBottom = "10px") {
   return new St.BoxLayout({
-    vertical: false,
     style: `spacing: ${spacing}; margin-bottom: ${marginBottom};`,
   });
 }

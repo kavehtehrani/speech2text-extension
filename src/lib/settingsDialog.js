@@ -4,7 +4,7 @@ import St from "gi://St";
 import * as Main from "resource:///org/gnome/shell/ui/main.js";
 
 import { COLORS, STYLES, createAccentDisplayStyle } from "./constants.js";
-import { isWaylandCompositor } from "./compat.js";
+import { boxOrientation, isWaylandCompositor } from "./compat.js";
 import {
   createHoverButton,
   createStyledLabel,
@@ -80,7 +80,7 @@ export class SettingsDialog {
     // This ensures proper hit-testing on GNOME 49+
     this.settingsWindow = new St.BoxLayout({
       style_class: "settings-window",
-      vertical: true,
+      ...boxOrientation(true),
       style: `
         background-color: rgba(20, 20, 20, 0.95);
         border-radius: 12px;

@@ -4,6 +4,7 @@ import St from "gi://St";
 import * as Main from "resource:///org/gnome/shell/ui/main.js";
 
 import { COLORS, STYLES } from "./constants.js";
+import { boxOrientation } from "./compat.js";
 import { createCloseButton, createHeaderLayout } from "./buttonUtils.js";
 import { createStyledLabel, createHoverButton } from "./uiUtils.js";
 import {
@@ -37,7 +38,7 @@ export class ShortcutCapture {
     // Create a modal dialog to capture new shortcut
     this.captureWindow = new St.BoxLayout({
       style_class: "capture-shortcut-window",
-      vertical: true,
+      ...boxOrientation(true),
       style: `
         background-color: rgba(20, 20, 20, 0.95);
         border-radius: 12px;
@@ -51,7 +52,6 @@ export class ShortcutCapture {
 
     // Header with close button (matching other modals)
     const titleContainer = new St.BoxLayout({
-      vertical: false,
       style: "spacing: 10px;",
       x_align: Clutter.ActorAlign.START,
       x_expand: true,
@@ -122,7 +122,6 @@ export class ShortcutCapture {
 
     // Cancel button
     const buttonBox = new St.BoxLayout({
-      vertical: false,
       style: "margin-top: 20px;",
       x_align: Clutter.ActorAlign.CENTER,
     });

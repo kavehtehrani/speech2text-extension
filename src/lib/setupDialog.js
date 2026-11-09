@@ -5,6 +5,7 @@ import St from "gi://St";
 import * as Main from "resource:///org/gnome/shell/ui/main.js";
 
 import { COLORS, STYLES } from "./constants.js";
+import { boxOrientation } from "./compat.js";
 import { createHorizontalBox, createStyledLabel } from "./uiUtils.js";
 import {
   createCenteredBox,
@@ -84,7 +85,7 @@ export class ServiceSetupDialog {
     // Main dialog container (matching settings dialog styling exactly)
     this.dialogContainer = new St.BoxLayout({
       style_class: "setup-dialog-window",
-      vertical: true,
+      ...boxOrientation(true),
       style: `
         background-color: rgba(20, 20, 20, 0.95);
         border-radius: 12px;
